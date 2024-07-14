@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+}
+
+#header img {
+    width: 100px;
+    margin-right: 100px;
+}
+
+#header h3 {
+    margin-right: 100px;
+    font-weight: bold;
+}
+
+select {
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    background-color: blue;
+    color: white;
+}
+
+#right {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 10px;
+}
+
+#thoigian {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 20px;
+    color: white;
+    background-color: green;
+    padding: 10px;
+}
+
+.capnhat {
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: bold;
+}
+
+table th {
+    color: white;
+    vertical-align: top;
+    width: 60px;
+}
+
+table td {
+    background-color: white;
+}
+
+table .text-right {
+    text-align: right;
+}
+
+table .text-left {
+    text-align: left;
+}
+.green_text {
+    color: green;
+}
+
+input {
+    text-align: center;
+    font-weight: bold;
+    width: 50px;
+    border: none;
+}
+input[readonly] {
+    border: none;
+    background-color: transparent;
+    outline: none; /* Bỏ outline khi focus vào input */
+}
+.flash-message {
+    color: green;
+    font-weight: bold;
+    margin-right: 50px;
+    padding: 10px;
+    border: 5px solid green;
+    border-radius: 5px;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    -ms-border-radius: 5;
+    -o-border-radius: 5;
+}
