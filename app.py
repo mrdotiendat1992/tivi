@@ -47,7 +47,6 @@ def input_data():
         flash_messages = get_flashed_messages()
         if flash_messages is None:
             flash_messages = []
-            
         return render_template('input.html',data=data,xuong=xuong,ngay=ngay,flash_messages=flash_messages)
 
 if __name__ == '__main__':
