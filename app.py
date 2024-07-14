@@ -50,4 +50,4 @@ def input_data():
         return render_template('input.html',data=data,xuong=xuong,ngay=ngay,flash_messages=flash_messages)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=True, host='0.0.0.0', port=82)
