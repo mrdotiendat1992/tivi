@@ -57,7 +57,7 @@ table {
 
 table th {
     color: white;
-    vertical-align: top;
+    vertical-align: middle;
     width: 60px;
 }
 
@@ -79,13 +79,19 @@ table .text-left {
 input {
     text-align: center;
     font-weight: bold;
-    width: 50px;
-    border: none;
+    width: 60px;
+    border: 1px solid black;
+    border-radius: 5px;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    -ms-border-radius: 5;
+    -o-border-radius: 5;
 }
 input[readonly] {
     border: none;
-    background-color: transparent;
-    outline: none; /* Bỏ outline khi focus vào input */
+    background-color: white;
+    text-align: center;
+    outline: none;
 }
 .flash-message {
     color: green;

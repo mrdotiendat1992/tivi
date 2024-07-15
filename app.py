@@ -10,35 +10,29 @@ CORS(app)
 
 @app.route('/')
 def index():
-    xuong = ["1P01","1P02","2P01","2P02","2P03"]
+    cacxuong = ["1P01","1P02","2P01","2P02","2P03"]
+    xuong = request.args.get('xuong')
     # Lấy thòi gian khi request được gủi đến, làm tròn thời gian lùi về trước 30 phút
     giohientai = datetime.now().hour
     print(giohientai)
     giohienthi = f"{giohientai-1}:30"
-    return render_template('index.html',xuong=xuong,thoigian=giohienthi)
+    data = lay_data_theo_xuong(xuong) 
+    return render_template('index.html',cacxuong=cacxuong,thoigian=giohienthi,data = data)
 
 @app.route('/nhapvao',methods=['GET','POST'])
 def input_data():
     if request.method == 'POST':
-        giobatdaumoi = request.form.get('giobatdaumoi')
-        if giobatdaumoi:
-            xuong= request.args.get('xuong')
-            capnhatgiobatdaumoi(xuong,giobatdaumoi)
-            flash('Cập nhật thành công')
-            return redirect("nhapvao?xuong="+xuong)
-        gioketthucmoi = request.form.get('gioketthucmoi')
-        if gioketthucmoi:
-            xuong= request.args.get('xuong')
-            capnhatgioketthucmoi(xuong,gioketthucmoi)
-            flash('Cập nhật thành công')
-            return redirect("nhapvao?xuong="+xuong)
+        giobatdau = request.form.get('giobatdau')
+        gioketthuc = request.form.get('gioketthuc')
         chuyen = request.form.get('chuyen')
         xuong = request.args.get('xuong')
         tongcnmay = request.form.get('tongcnmay')
         cnmaydilam = request.form.get('socndilam')
         socntinhsah = request.form.get('socntinhsah')
-        if capnhatthongtincongnhan(chuyen,xuong,tongcnmay,cnmaydilam,socntinhsah):
+        if capnhatthongtincongnhan(chuyen,xuong,tongcnmay,cnmaydilam,socntinhsah,giobatdau,gioketthuc):
             flash('Cập nhật thành công')
+        else:
+            flash('Cập nhật thất bại')
         return redirect("nhapvao?xuong="+xuong)
     else:
         data = lay_data_goi_y()
