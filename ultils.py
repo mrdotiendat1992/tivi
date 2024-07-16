@@ -47,3 +47,10 @@ def lay_data_theo_xuong(xuong):
     result = list(cursor)
     close_db(conn)
     return result
+
+def lay_data_theo_nhamay(xuong):
+    conn = connect_db()
+    cursor = execute_query(conn, f"select * from SAN_LUONG_THEO_GIO_XUONG where XUONG LIKE '{xuong[0]}%'" ).fetchall()
+    result = list(cursor)
+    close_db(conn)
+    return result

@@ -15,8 +15,9 @@ def index():
     # Lấy thòi gian khi request được gủi đến, làm tròn thời gian lùi về trước 30 phút
     giohientai = datetime.now().hour
     giohienthi = f"{giohientai-1}:30"
-    data = lay_data_theo_xuong(xuong) 
-    return render_template('index.html',cacxuong=cacxuong,thoigian=giohienthi,data = data)
+    data_xuong = lay_data_theo_xuong(xuong) 
+    data_nhamay = lay_data_theo_nhamay(xuong) 
+    return render_template('index.html',cacxuong=cacxuong,thoigian=giohienthi,data_xuong = data_xuong,data_nhamay = data_nhamay)
 
 @app.route('/nhapvao',methods=['GET','POST'])
 def input_data():

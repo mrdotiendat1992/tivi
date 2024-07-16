@@ -16,7 +16,16 @@ function clearNone() {
         }
     });
 }
+function adjustColumnWidths() {
+    const table = document.querySelector('table');
+    const cols = table.querySelectorAll('td');
+    cols.forEach(col => {
+        col.style.width = 'auto';
+    });
+}
 
+// Call the function to adjust column widths after the page loads
+window.onload = adjustColumnWidths;
 
 // Gọi hàm clearFlashMessages khi trang đã tải xong
 window.onload = clearFlashMessages;
