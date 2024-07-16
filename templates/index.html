@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     {% for row in data_xuong %}
-                    <tr class="table-primary">
+                    <tr>
                         <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
                         <td class= "text-right">{{ row[2] }}</td>
@@ -91,9 +91,13 @@
                         {% endif %}
                     </tr>
                     {% endfor %}
-                    <th></th>
+                </tbody>
+            </table>
+            <br>
+            <table class="table table-bordered  table-striped table-sm" id="tonghop">
+                <tbody>
                     {% for row in data_nhamay %}
-                    <tr class="table-success">
+                    <tr class="table-primary">
                         <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
                         <td class= "text-right">{{ row[2] }}</td>
