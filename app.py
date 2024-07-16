@@ -11,10 +11,11 @@ CORS(app)
 @app.route('/')
 def index():
     cacxuong = ["1P01","1P02","2P01","2P02","2P03"]
-    xuong = request.args.get('xuong')
-    # Lấy thòi gian khi request được gủi đến, làm tròn thời gian lùi về trước 30 phút
     giohientai = datetime.now().hour
     giohienthi = f"{giohientai-1}:30"
+    xuong = request.args.get('xuong')
+    if not xuong:
+        xuong = "1P01"
     data_xuong = lay_data_theo_xuong(xuong) 
     data_nhamay = lay_data_theo_nhamay(xuong) 
     return render_template('index.html',cacxuong=cacxuong,thoigian=giohienthi,data_xuong = data_xuong,data_nhamay = data_nhamay)
