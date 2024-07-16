@@ -8,5 +8,20 @@ function clearFlashMessages() {
     });
 }
 
+function clearNone() {
+    const checkelements = document.querySelectorAll('td');
+    checkelements.forEach(element => {
+        if (element.innerText.includes("None")) {
+            element.innerText = "";
+        }
+    });
+}
+
+
 // Gọi hàm clearFlashMessages khi trang đã tải xong
 window.onload = clearFlashMessages;
+window.onload = clearNone
+
+setTimeout(function() {
+    location.reload();
+}, 600000);
