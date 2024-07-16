@@ -53,16 +53,18 @@ table {
     border-collapse: collapse;
     text-align: center;
     font-weight: bold;
+    table-layout: auto;
 }
 
 table th {
     color: white;
     vertical-align: middle;
-    width: 60px;
+
 }
 
 table td {
     background-color: white;
+    white-space: nowrap;
 }
 
 table .text-right {
