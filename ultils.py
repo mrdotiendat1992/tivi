@@ -33,11 +33,12 @@ def capnhatthongtincongnhan(chuyen,xuong,tongcnmay,cnmaydilam,socntinhsah,giobat
         cnmaynghi = int(tongcnmay) - int(cnmaydilam)
         conn = connect_db()
         cursor = conn.cursor()
-        cursor.execute(f"update TGLV_TRONG_NGAY_GOI_Y set TONG_CN_MAY = '{tongcnmay}', SO_CN_DI_LAM = '{cnmaydilam}', SO_CN_NGHI = '{cnmaynghi}', CN_TINH_SAH = '{socntinhsah}', GIO_BAT_DAU = '{giobatdaumoi}', GIO_KET_THUC = '{gioketthucmoi}' where CHUYEN = '{chuyen}' and XUONG = '{xuong}'")
+        cursor.execute(f"update TGLV_TRONG_NGAY_GOI_Y set TONG_CN_MAY = '{tongcnmay}', SO_CN_DI_LAM = '{cnmaydilam}', SO_CN_NGHI = '{cnmaynghi}', CN_TINH_SAH = '{socntinhsah}', GIO_BAT_DAU = '{giobatdau}', GIO_KET_THUC = '{gioketthuc}' where CHUYEN = '{chuyen}' and XUONG = '{xuong}'")
         conn.commit()
         close_db(conn)
         return True
-    except:
+    except Exception as e:
+        print(e)
         return False
     
 def lay_data_theo_xuong(xuong):
