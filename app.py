@@ -31,6 +31,9 @@ def round_down_time(dt):
     # If the new time is greater than the original, subtract 30 minutes
     if new_dt > dt:
         new_dt -= timedelta(minutes=30)
+    
+    if new_dt.hour == 0 and new_dt.minute == 0:
+        new_dt = new_dt - timedelta(minutes=30)
 
     return new_dt.strftime("%H:%M")
 
