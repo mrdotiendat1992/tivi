@@ -18,7 +18,7 @@
             <h3>Ngày: {{ngay}}</h3>
             <form method="GET">
                 <select type="text" name="xuong" id="xuong" onchange="form.submit()">
-                    {% for x in xuong %}   
+                    {% for x in cac_xuong %}   
                     {% if x == request.args.get('xuong') %}
                     <option value="{{ x }}" selected>{{ x }}</option>
                     {% else %}
@@ -51,7 +51,6 @@
                 </thead>
                 <tbody>
                     {% for row in data %}
-                    {% if request.args.get('xuong') == row[0] %}
                     <tr data-id="{{ row | safe }}">
                         <form method="POST">
                             <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[1] }}"></td>
@@ -63,7 +62,6 @@
                             <td><input type="text" name="gioketthuc" id="gioketthuc"  onchange="form.submit()" value="{{ row[7] }}"></td>
                         </form>
                     </tr>
-                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

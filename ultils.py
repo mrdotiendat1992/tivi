@@ -12,9 +12,9 @@ def execute_query(conn, query):
     cursor.execute(query)
     return cursor
 
-def lay_data_goi_y():
+def lay_data_goi_y(xuong):
     conn = connect_db()
-    cursor = execute_query(conn, 'select * from TGLV_TRONG_NGAY_GOI_Y').fetchall()
+    cursor = execute_query(conn, f"select * from TGLV_TRONG_NGAY_GOI_Y where XUONG = '{xuong}' ORDER BY Chuyen ASC").fetchall()
     result = list(cursor)
     close_db(conn)
     return result
@@ -43,7 +43,7 @@ def capnhatthongtincongnhan(chuyen,xuong,tongcnmay,cnmaydilam,socntinhsah,giobat
     
 def lay_data_theo_xuong(xuong):
     conn = connect_db()
-    cursor = execute_query(conn, f"select * from SAN_LUONG_HANG_GIO where XUONG = '{xuong}'" ).fetchall()
+    cursor = execute_query(conn, f"select * from SAN_LUONG_HANG_GIO where XUONG = '{xuong}' ORDER BY Chuyen ASC" ).fetchall()
     result = list(cursor)
     close_db(conn)
     return result

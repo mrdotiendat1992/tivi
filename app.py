@@ -36,13 +36,18 @@ def input_data():
             flash('Cập nhật thất bại')
         return redirect("nhapvao?xuong="+xuong)
     else:
-        data = lay_data_goi_y()
-        xuong = lay_cac_xuong()
+        
+        cac_xuong = lay_cac_xuong()
+        xuong = request.args.get('xuong')
+        data = lay_data_goi_y(xuong)
         ngay = datetime.now().strftime("%d-%m-%Y")
         flash_messages = get_flashed_messages()
         if flash_messages is None:
             flash_messages = []
-        return render_template('input.html',data=data,xuong=xuong,ngay=ngay,flash_messages=flash_messages)
+        if not xuong:
+            xuong = "1P01"
+            return redirect("nhapvao?xuong="+xuong)
+        return render_template('input.html',data=data,cac_xuong=cac_xuong,ngay=ngay,flash_messages=flash_messages)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=82)
+    app.run(debug=False, host='0.0.0.0', port=82)

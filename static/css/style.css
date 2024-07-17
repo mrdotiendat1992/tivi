@@ -14,12 +14,14 @@ body {
 }
 
 #header h3 {
-    margin-right: 100px;
+    margin-right: 60px;
     font-weight: bold;
 }
 
 select {
-    width: 70px;
+    font-size: 50px;
+    width: 100px;
+    height: 50px;
     font-weight: bold;
     text-align: center;
     background-color: blue;
@@ -29,8 +31,7 @@ select {
 #right {
     display: flex;
     align-items: center;
-    position: fixed;
-    right: 10px;
+    margin-left: 50px;
 }
 
 #thoigian {
