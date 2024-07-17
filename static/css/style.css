@@ -56,6 +56,7 @@ table {
     text-align: center;
     font-weight: bold;
     table-layout: auto;
+    font-size: 19px;
 }
 
 table th {

@@ -1,6 +1,6 @@
 from flask import Flask, render_template,request, flash, redirect,get_flashed_messages
 from flask_cors import CORS
-from datetime import datetime
+from datetime import datetime, timedelta
 from ultils import *
 
 app = Flask(__name__)
@@ -8,11 +8,37 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 CORS(app)
 
+def round_down_time(dt):
+    hour = dt.hour
+    minute = dt.minute
+    # print(hour, minute)
+
+    # Calculate the rounded minute
+    if minute < 30:
+        rounded_minute = 0
+    else:
+        rounded_minute = 30
+    # print(rounded_minute)
+    # Adjust the hour if necessary
+    if minute < 30:
+        rounded_hour = hour
+    else:
+        rounded_hour = hour
+    # print(rounded_hour)
+    # Create the new datetime object
+    new_dt = datetime(dt.year, dt.month, dt.day, rounded_hour, rounded_minute)
+    # print(new_dt)
+    # If the new time is greater than the original, subtract 30 minutes
+    if new_dt < dt:
+        new_dt = new_dt - timedelta(minutes=30)
+    # print(new_dt)
+    return new_dt.strftime("%H:%M")
+
 @app.route('/')
 def index():
     cacxuong = ["1P01","1P02","2P01","2P02","2P03"]
-    giohientai = datetime.now().hour
-    giohienthi = f"{giohientai-1}:30"
+    giohientai = datetime.now()
+    giohienthi = round_down_time(giohientai)
     xuong = request.args.get('xuong')
     if not xuong:
         xuong = "1P01"
