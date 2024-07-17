@@ -2,6 +2,7 @@ from flask import Flask, render_template,request, flash, redirect,get_flashed_me
 from flask_cors import CORS
 from datetime import datetime, timedelta
 from ultils import *
+from waitress import serve
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
@@ -74,6 +75,3 @@ def input_data():
             xuong = "1P01"
             return redirect("nhapvao?xuong="+xuong)
         return render_template('input.html',data=data,cac_xuong=cac_xuong,ngay=ngay,flash_messages=flash_messages)
-
-if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=82)
