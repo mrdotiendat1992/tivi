@@ -12,27 +12,26 @@ CORS(app)
 def round_down_time(dt):
     hour = dt.hour
     minute = dt.minute
-    # print(hour, minute)
 
-    # Calculate the rounded minute
-    if minute < 30:
-        rounded_minute = 0
-    else:
-        rounded_minute = 30
-    # print(rounded_minute)
+    # Define the intervals: 0:00, 0:30, 1:00, 1:30, ...
+    intervals = [0, 30]
+
+    # Find the closest past interval
+    closest_past_interval = max([i for i in intervals if i <= minute])
+
     # Adjust the hour if necessary
     if minute < 30:
         rounded_hour = hour
     else:
         rounded_hour = hour
-    # print(rounded_hour)
+
     # Create the new datetime object
-    new_dt = datetime(dt.year, dt.month, dt.day, rounded_hour, rounded_minute)
-    # print(new_dt)
+    new_dt = datetime(dt.year, dt.month, dt.day, rounded_hour, closest_past_interval)
+
     # If the new time is greater than the original, subtract 30 minutes
-    if new_dt < dt:
-        new_dt = new_dt - timedelta(minutes=30)
-    # print(new_dt)
+    if new_dt > dt:
+        new_dt -= timedelta(minutes=30)
+
     return new_dt.strftime("%H:%M")
 
 @app.route('/')
