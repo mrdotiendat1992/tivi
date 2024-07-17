@@ -85,9 +85,6 @@
                         {% endif %}
                         {% if row[14] %}
                         <td>{{ (row[14]*100) | round() }} %</td>
-                        {% else %}
-                        <td></td>
-                        {% endif %}
                         {% if row[15] %}
                             {% if (row[15] >= row[14]) %}
                             <td style="color: green; font-weight: bold;">{{ (row[15]*100) | round() }} %</td>
@@ -97,6 +94,10 @@
                         {% else %}
                         <td></td>
                         {% endif %}
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -141,11 +142,8 @@
                         {% endif %}
                         {% if row[12] %}
                         <td>{{ (row[12]*100) | round() }} %</td>
-                        {% else %}
-                        <td></td>
-                        {% endif %}
                         {% if row[13] %}
-                            {% if row[12] and (row[13] >= row[12]) %}
+                            {% if (row[13] >= row[12]) %}
                             <td style="color: green; font-weight: bold;">{{ (row[13]*100) | round() }} %</td>
                             {% else %}
                             <td style="color: red; font-weight: bold;">{{ (row[13]*100) | round() }} %</td>
@@ -153,6 +151,10 @@
                         {% else %}
                         <td></td>
                         {% endif %}
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        
                     </tr>
                     {% endfor %}
                 </tbody>

@@ -39,7 +39,7 @@ def round_down_time(dt):
 
 @app.route('/')
 def index():
-    cacxuong = ["1P01","1P02","2P01","2P02","2P03"]
+    cacxuong = ["1P01","1P02","1P03","2P01","2P02","2P03","2P04", "2P05"]
     giohientai = datetime.now()
     giohienthi = round_down_time(giohientai)
     xuong = request.args.get('xuong')
