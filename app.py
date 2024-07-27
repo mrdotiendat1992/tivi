@@ -77,3 +77,16 @@ def input_data():
             xuong = "1P01"
             return redirect("nhapvao?xuong="+xuong)
         return render_template('input.html',data=data,cac_xuong=cac_xuong,ngay=ngay,flash_messages=flash_messages)
+
+if __name__ == "__main__":
+    while True:
+        try:
+            app.run(debug=False, host="0.0.0.0", port=82)
+        except subprocess.CalledProcessError as e:
+            app.logger.error(f"Flask gap loi: {e}")
+            print("Đang khoi dong flask...")
+            time.sleep(1)  # Đợi một khoảng thời gian trước khi khởi động lại
+        except Exception as e:
+            app.logger.error(f"Loi khong xac dinh: {e}")
+            print("Đang khoi dong lai flask ...")
+            time.sleep(1)
