@@ -1,1 +1,1 @@
-waitress-serve --port=82 app:app
+python main.py
