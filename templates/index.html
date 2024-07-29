@@ -69,6 +69,8 @@
                             {% else %}
                             <td class="text-left">({{ (row[3]*100) | round() }} %)</td>
                             {% endif %}
+                        {% else %}
+                        <td></td>
                         {% endif %}
 
                         <td>{{ row[4] }}</td>
