@@ -54,12 +54,15 @@
                     {% for row in data_xuong %}
                     <tr>
                         <td>{{ row[0] }}</td>
+
                         <td>{{ row[1] }}</td>
+
                         {% if row[2] and row[2]<0 %}
                         <td></td>
                         {% else %}
                         <td class= "text-right">{{ row[2] }}</td>
                         {% endif %}
+                        
                         {% if row[3] %}
                             {% if (row[3] < 0) %}
                             <td></td>
@@ -67,41 +70,52 @@
                             <td class="text-left">({{ (row[3]*100) | round() }} %)</td>
                             {% endif %}
                         {% endif %}
+
                         <td>{{ row[4] }}</td>
+
                         <td>{{ row[5] }}</td>
+
                         <td class= "text-right">{{ row[6] }}</td>
+
                         <td class="text-left">/ {{ row[7] }}</td>
+
                         <td class= "text-right">{{ row[8] }}</td>
+
                         {% if row[9] and row[9] <= 0 %}
                         <td class="text-left" style="color: red;">({{ row[9] }})</td>
                         {% else %}
                         <td class="text-left" style="color: green;">({{ row[9] }})</td>
                         {% endif %}
+
                         <td class= "text-right">{{ row[10] }}</td>
+
                         <td class="text-left">/ {{ row[11] }}</td>
+
                         <td class= "text-right">{{ row[12] }}</td>
+
                         {% if row[13] and row[13] < 0 %}
                         <td class="text-left" style="color: red;">({{ row[13] }})</td>
                         {% else %}
                         <td class="text-left" style="color: green;">({{ row[13] }})</td>
                         {% endif %}
+
                         {% if row[14] %}
                         <td>{{ (row[14]*100) | round() }} %</td>
-                        {% if row[15] %}
-                            {% if (row[15] >= row[14]) %}
-                            <td style="color: green; font-weight: bold;">{{ (row[15]*100) | round() }} %</td>
+                            {% if row[15] %}
+                                {% if (row[15] >= row[14]) %}
+                                <td style="color: green; font-weight: bold;">{{ (row[15]*100) | round() }} %</td>
+                                {% else %}
+                                <td style="color: red; font-weight: bold;">{{ (row[15]*100) | round() }} %</td>
+                                {% endif %}
                             {% else %}
-                            <td style="color: red; font-weight: bold;">{{ (row[15]*100) | round() }} %</td>
+                            <td></td>
                             {% endif %}
                         {% else %}
                         <td></td>
                         {% endif %}
-                        {% else %}
-                        <td></td>
-                        {% endif %}
-                        
                     </tr>
                     {% endfor %}
+                    
                 </tbody>
             </table>
             <br>
