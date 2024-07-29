@@ -55,15 +55,17 @@
                     <tr>
                         <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
-                        {% if row[2]<0 %}
+                        {% if row[2] and row[2]<0 %}
                         <td></td>
                         {% else %}
                         <td class= "text-right">{{ row[2] }}</td>
                         {% endif %}
-                        {% if row[3]<0 %}
-                        <td></td>
-                        {% else %}
-                        <td class="text-left">({{ (row[3]*100) | round() }} %)</td>
+                        {% if row[3] %}
+                            {% if (row[3] < 0) %}
+                            <td></td>
+                            {% else %}
+                            <td class="text-left">({{ (row[3]*100) | round() }} %)</td>
+                            {% endif %}
                         {% endif %}
                         <td>{{ row[4] }}</td>
                         <td>{{ row[5] }}</td>
@@ -123,7 +125,11 @@
                         <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
                         <td class= "text-right">{{ row[2] }}</td>
+                        {% if row[3] %}
                         <td class="text-left">({{ (row[3]*100) | round() }} %)</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
                         <td class= "text-right">{{ row[4] }}</td>
                         <td class="text-left">/ {{ row[5] }}</td>
                         <td class= "text-right">{{ row[6] }}</td>
