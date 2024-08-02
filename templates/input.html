@@ -53,13 +53,13 @@
                     {% for row in data %}
                     <tr data-id="{{ row | safe }}">
                         <form method="POST">
-                            <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[1] }}"></td>
-                            <td><input readonly type="number" name="tongcnmay" id="tongcnmay" value="{{ row[2] }}"></td>
-                            <td><input type="number" name="socndilam" id="socndilam" onchange="form.submit()" min="0" value="{{ row[3] }}"></td>
-                            <td><input readonly type="number" name="socnnghi" id="socnnghi" onchange="form.submit()" min="0" value="{{ row[4] }}"></td>
-                            <td><input type="number" name="socntinhsah" id="socntinhsah" onchange="form.submit()" min="0" value="{{ row[5] }}"></td>
-                            <td><input type="text" name="giobatdau" id="giobatdau"  onchange="form.submit()" value="{{ row[6] }}"></td>
-                            <td><input type="text" name="gioketthuc" id="gioketthuc"  onchange="form.submit()" value="{{ row[7] }}"></td>
+                            <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[2] }}"></td>
+                            <td><input readonly type="number" name="tongcnmay" id="tongcnmay" value="{{ row[3] }}"></td>
+                            <td><input type="number" name="socndilam" id="socndilam" onchange="form.submit()" min="0" value="{{ row[4] }}"></td>
+                            <td><input readonly type="number" name="socnnghi" id="socnnghi" onchange="form.submit()" min="0" value="{{ row[5] }}"></td>
+                            <td><input type="number" name="socntinhsah" id="socntinhsah" onchange="form.submit()" min="0" value="{{ row[6] }}"></td>
+                            <td><input type="text" name="giobatdau" id="giobatdau"  onchange="form.submit()" value="{{ row[7] }}"></td>
+                            <td><input type="text" name="gioketthuc" id="gioketthuc"  onchange="form.submit()" value="{{ row[8] }}"></td>
                         </form>
                     </tr>
                     {% endfor %}

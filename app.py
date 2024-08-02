@@ -49,7 +49,12 @@ def index():
         xuong = "1P01"
     data_xuong = lay_data_theo_xuong(xuong) 
     data_nhamay = lay_data_theo_nhamay(xuong) 
-    return render_template('index.html',cacxuong=cacxuong,thoigian=giohienthi,data_xuong = data_xuong,data_nhamay = data_nhamay)
+    data_toan_congty = lay_data_toan_congty()
+    return render_template('index.html',cacxuong=cacxuong,
+                           thoigian=giohienthi,
+                           data_xuong = data_xuong,
+                           data_nhamay = data_nhamay,
+                           data_toan_congty= data_toan_congty)
 
 @app.route('/nhapvao',methods=['GET','POST'])
 def input_data():
@@ -67,7 +72,6 @@ def input_data():
             flash('Cập nhật thất bại')
         return redirect("nhapvao?xuong="+xuong)
     else:
-        
         cac_xuong = lay_cac_xuong()
         xuong = request.args.get('xuong')
         data = lay_data_goi_y(xuong)
