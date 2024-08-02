@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,7 +53,11 @@
                     {% for row in data %}
                     <tr data-id="{{ row | safe }}">
                         <form method="POST">
+<<<<<<< HEAD
                             <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[2] }}"></td>
+=======
+                            <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[1] }}"></td>
+>>>>>>> 279fc274921d49e3cd348330ce48cbd9558f2f44
                             <td><input readonly type="number" name="tongcnmay" id="tongcnmay" value="{{ row[3] }}"></td>
                             <td><input type="number" name="socndilam" id="socndilam" onchange="form.submit()" min="0" value="{{ row[4] }}"></td>
                             <td><input readonly type="number" name="socnnghi" id="socnnghi" onchange="form.submit()" min="0" value="{{ row[5] }}"></td>
