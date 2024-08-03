@@ -111,5 +111,7 @@ input[readonly] {
 }
 
 #import_file {
-    margin-left: 20px;
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
 }
