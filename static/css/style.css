@@ -20,7 +20,6 @@ body {
 
 select {
     font-size: 50px;
-    width: 100px;
     height: 50px;
     font-weight: bold;
     text-align: center;
@@ -109,4 +108,8 @@ input[readonly] {
     -moz-border-radius: 5;
     -ms-border-radius: 5;
     -o-border-radius: 5;
+}
+
+#import_file {
+    margin-left: 20px;
 }

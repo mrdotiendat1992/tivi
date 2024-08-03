@@ -27,7 +27,34 @@
                     {% endfor %}
                 <select>
             </form>
+            
             <div id="right">
+                <button class="btn btn-success btn" data-bs-toggle="modal" data-bs-target="#importModal">Nhập dữ liệu từ excel</button>
+                <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="importModalLabel">Nhập dữ liệu từ excel</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/nhapfile"  method="POST" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="file" class="form-label">File Excel</label>
+                                        <input type="file" class="form-control" id="file" name="file">
+                                        <br>
+                                        <select type="text" name="kieufile">
+                                            <option value="1">Nhập số lượng công nhân</option>
+                                            <option value="2">Nhập style</option>
+                                            <option value="3">Nhập sản lượng</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="import_file">Nhập vào</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% for message in flash_messages %}
                 <div class="flash-message">
                     {{ message }}
@@ -53,11 +80,7 @@
                     {% for row in data %}
                     <tr data-id="{{ row | safe }}">
                         <form method="POST">
-<<<<<<< HEAD
-                            <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[2] }}"></td>
-=======
                             <td><input readonly type="text" name="chuyen" id="chuyen" value="{{ row[1] }}"></td>
->>>>>>> 279fc274921d49e3cd348330ce48cbd9558f2f44
                             <td><input readonly type="number" name="tongcnmay" id="tongcnmay" value="{{ row[3] }}"></td>
                             <td><input type="number" name="socndilam" id="socndilam" onchange="form.submit()" min="0" value="{{ row[4] }}"></td>
                             <td><input readonly type="number" name="socnnghi" id="socnnghi" onchange="form.submit()" min="0" value="{{ row[5] }}"></td>

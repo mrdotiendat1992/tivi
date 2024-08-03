@@ -5,6 +5,8 @@ from ultils import *
 from waitress import serve
 import time
 import subprocess
+import pandas as pd
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
@@ -84,6 +86,64 @@ def input_data():
             return redirect("nhapvao?xuong="+xuong)
         return render_template('input.html',data=data,cac_xuong=cac_xuong,ngay=ngay,flash_messages=flash_messages)
 
+@app.route('/nhapfile',methods=['POST'])
+def nhapdulieutuexcel():
+    try:
+        kieufile = request.form.get('kieufile')
+        file = request.files['file']
+        if int(kieufile) == 1: # Nhập số lượng công nhân
+            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+            filepath = os.path.join(os.getcwd(),f"upload/soluong_congnhan_{timestamp}.xlsx")
+            file.save(filepath)
+            print("Upload file success !!!")
+            data = pd.read_excel(filepath).to_dict(orient="records")
+            for row in data:
+                values = [value for key, value in row.items()]
+                gio_bat_dau_str = str(values[7]).split(":")
+                gio_bat_dau = f"{int(gio_bat_dau_str[0])}:{gio_bat_dau_str[1]}"
+                print(gio_bat_dau)
+                query = f"""UPDATE TGLV_TRONG_NGAY_GOI_Y
+                            SET TONG_CN_MAY = '{values[3]}', SO_CN_DI_LAM = '{values[4]}', SO_CN_NGHI = '{values[5]}', CN_TINH_SAH = '{values[6]}', GIO_BAT_DAU = '{gio_bat_dau}', GIO_KET_THUC = '{str(values[8])[:5]}'
+                            WHERE NHA_MAY = '{values[0]}' AND CHUYEN = '{values[2]}' AND XUONG = '{values[1]}'"""
+                print(query)
+                conn = connect_db()
+                cursor = execute_query(conn,query)
+                conn.commit()
+                close_db(conn)
+        elif int(kieufile) == 2: # Nhập style
+            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+            filepath = os.path.join(os.getcwd(),f"style_{timestamp}.xlsx")
+            file.save(filepath)
+            print("Upload file success !!!")
+            data = pd.read_excel(filepath).to_dict(orient="records")
+            for row in data:
+                values = [value for key, value in row.items()]
+                query = f"""INSERT INTO STYLE_A (WorkDate,Workline,Style_No) VALUES ('{values[0]}','{values[1]}','{values[2]}')"""
+                print(query)
+                conn = connect_db()
+                cursor = execute_query(conn,query)
+                conn.commit()
+                close_db(conn)
+        elif int(kieufile) == 3: # Nhập sản lượng
+            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+            filepath = os.path.join(os.getcwd(),f"sanluong_{timestamp}.xlsx")
+            file.save(filepath)
+            print("Upload file success !!!")
+            data = pd.read_excel(filepath).to_dict(orient="records")
+            for row in data:
+                values = [value for key, value in row.items()]
+                timestamp = str(values[-1])[:-3]
+                query = f"INSERT INTO ETS_Qty VALUES ('{values[0]}','{values[1]}','{values[2]}','{values[3]}','{values[4]}','{timestamp}')"
+                print(query)
+                conn = connect_db()
+                cursor = execute_query(conn,query)
+                conn.commit()
+                close_db(conn)
+        return redirect("/nhapvao")
+    except Exception as e:
+        print(f"Loi khi nhap du lieu tu file: {e}")
+        return redirect("/nhapvao")
+    
 if __name__ == "__main__":
     while True:
         try:
