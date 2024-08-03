@@ -1,8 +1,8 @@
 from pyodbc import connect
 
 def connect_db():
-    # conn = connect(r'DRIVER={SQL Server};SERVER=172.16.60.100;DATABASE=DW;UID=huynguyen;PWD=Namthuan@123')
-    conn = connect(r'DRIVER={SQL Server};SERVER=DESKTOP-G635SF6;DATABASE=DW;Trusted_Connection=yes')
+    conn = connect(r'DRIVER={SQL Server};SERVER=172.16.60.100;DATABASE=DW;UID=huynguyen;PWD=Namthuan@123')
+    # conn = connect(r'DRIVER={SQL Server};SERVER=DESKTOP-G635SF6;DATABASE=DW;Trusted_Connection=yes')
     return conn
 
 def close_db(conn):
