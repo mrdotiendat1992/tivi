@@ -112,7 +112,7 @@ def nhapdulieutuexcel():
                 close_db(conn)
         elif int(kieufile) == 2: # Nhập style
             timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-            filepath = os.path.join(os.getcwd(),f"style_{timestamp}.xlsx")
+            filepath = os.path.join(os.getcwd(),f"upload/style_{timestamp}.xlsx")
             file.save(filepath)
             print("Upload file success !!!")
             data = pd.read_excel(filepath).to_dict(orient="records")
@@ -126,7 +126,7 @@ def nhapdulieutuexcel():
                 close_db(conn)
         elif int(kieufile) == 3: # Nhập sản lượng
             timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-            filepath = os.path.join(os.getcwd(),f"sanluong_{timestamp}.xlsx")
+            filepath = os.path.join(os.getcwd(),f"upload/sanluong_{timestamp}.xlsx")
             file.save(filepath)
             print("Upload file success !!!")
             data = pd.read_excel(filepath).to_dict(orient="records")
