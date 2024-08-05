@@ -33,4 +33,4 @@ window.onload = clearNone
 
 setTimeout(function() {
     location.reload();
-}, 600000);
+}, 300000); // 300000ms = 5 phut
