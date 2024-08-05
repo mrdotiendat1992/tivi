@@ -63,3 +63,10 @@ def lay_data_toan_congty():
     result = list(cursor)
     close_db(conn)
     return result
+
+def lay_gio_cap_nhat():
+    conn = connect_db()
+    cursor = execute_query(conn, 'select max(MOC_THOI_GIAN) from SAN_LUONG_HANG_GIO').fetchone()
+    result = cursor[0]
+    close_db(conn)
+    return result
