@@ -213,7 +213,7 @@
                         {% if row[7] and row[7] <= 0 %}
                         <td class="text-left" style="color: red;">({{ row[7] }})</td>
                         {% else %}
-                        <td class="text-left" style="color: green;">({{ row[7] }})</td>
+                        <td class="text-left" style="color: green;">(+{{ row[7] }})</td>
                         {% endif %}
                         <td class= "text-right">{{ row[8] }}</td>
                         <td class="text-left">/ {{ row[9] }}</td>
@@ -221,7 +221,7 @@
                         {% if row[11] and row[11] < 0 %}
                         <td class="text-left" style="color: red;">({{ row[11] }})</td>
                         {% else %}
-                        <td class="text-left" style="color: green;">({{ row[11] }})</td>
+                        <td class="text-left" style="color: green;">(+{{ row[11] }})</td>
                         {% endif %}
                         {% if row[12] %}
                         <td>{{ (row[12]*100) | round() }} %</td>
