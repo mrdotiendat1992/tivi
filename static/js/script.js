@@ -34,3 +34,5 @@ window.onload = clearNone
 setTimeout(function() {
     location.reload();
 }, 300000); // 300000ms = 5 phut
+
+document.querySelectorAll('.title span').forEach((span, index) => { span.style.animationDelay = `${index * 0.2}s`; });
