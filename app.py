@@ -147,7 +147,7 @@ def nhapdulieutuexcel():
 if __name__ == "__main__":
     while True:
         try:
-            app.run(debug=False, host="0.0.0.0", port=82)
+            serve(app, host="0.0.0.0", port=83)
         except subprocess.CalledProcessError as e:
             app.logger.error(f"Flask gap loi: {e}")
             print("Đang khoi dong flask...")
